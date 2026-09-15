@@ -1,4 +1,4 @@
-import Badge from '../UI/Badge.jsx'
+import Badge from './Badge.jsx'
 
 /**
  * ProductCard
