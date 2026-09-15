@@ -1,18 +1,18 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
+  --text: #5c5c5a;
+  --text-h: #1a1a18;
+  --bg: #faf9f6;
+  --border: #e5e2dc;
   --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
+  --accent: #c9a96e;
+  --accent-bg: rgba(201, 169, 110, 0.1);
+  --accent-border: rgba(201, 169, 110, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
   --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+    rgba(0, 0, 0, 0.08) 0 10px 15px -3px, rgba(0, 0, 0, 0.04) 0 4px 6px -2px;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --heading: 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
@@ -37,9 +37,9 @@
     --bg: #16171d;
     --border: #2e303a;
     --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
+    --accent: #d4b87a;
+    --accent-bg: rgba(212, 184, 122, 0.1);
+    --accent-border: rgba(212, 184, 122, 0.5);
     --social-bg: rgba(47, 48, 58, 0.5);
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
@@ -74,17 +74,18 @@ h2 {
 }
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
+  font-size: 64px;
+  line-height: 110%;
+  letter-spacing: -1.92px;
   margin: 32px 0;
   @media (max-width: 1024px) {
-    font-size: 36px;
+    font-size: 40px;
     margin: 20px 0;
   }
 }
 h2 {
   font-size: 24px;
-  line-height: 118%;
+  line-height: 120%;
   letter-spacing: -0.24px;
   margin: 0 0 8px;
   @media (max-width: 1024px) {
@@ -93,6 +94,10 @@ h2 {
 }
 p {
   margin: 0;
+}
+
+nav {
+  font-size: 16px;
 }
 
 code,
@@ -108,4 +113,1100 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+/* --------------------------------------------------------------------------
+   UI primitives (Button, Badge, Card, Separator)
+   Normalized to the project's CSS variable system.
+   -------------------------------------------------------------------------- */
+
+.ui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.ui-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.ui-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ui-button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* Sizes */
+.ui-button--default {
+  height: 44px;
+  padding: 0 20px;
+  font-size: 16px;
+}
+
+.ui-button--sm {
+  height: 36px;
+  padding: 0 14px;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+.ui-button--lg {
+  height: 52px;
+  padding: 0 28px;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+.ui-button--icon {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 8px;
+}
+
+/* Variants */
+.ui-button--default {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.ui-button--default:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--accent) 85%, #000);
+  border-color: color-mix(in srgb, var(--accent) 85%, #000);
+}
+
+.ui-button--secondary {
+  background: transparent;
+  color: var(--text-h);
+  border-color: var(--border);
+}
+
+.ui-button--secondary:hover:not(:disabled) {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
+
+.ui-button--ghost {
+  background: transparent;
+  color: var(--text-h);
+  border-color: transparent;
+}
+
+.ui-button--ghost:hover:not(:disabled) {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+.ui-button--link {
+  background: transparent;
+  color: var(--accent);
+  border-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ui-button--link:hover:not(:disabled) {
+  color: color-mix(in srgb, var(--accent) 75%, #000);
+}
+
+/* Badge */
+.ui-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 0 10px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 9999px;
+}
+
+/* Card */
+.ui-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.ui-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 24px 24px 0;
+}
+
+.ui-card__title {
+  margin: 0;
+  font-family: var(--heading);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 124%;
+  letter-spacing: -0.2px;
+  color: var(--text-h);
+}
+
+.ui-card__description {
+  margin: 0;
+  font-size: 15px;
+  line-height: 142%;
+  color: var(--text);
+}
+
+.ui-card__content {
+  padding: 24px;
+}
+
+.ui-card__content:only-child {
+  padding-top: 24px;
+}
+
+.ui-card__footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 24px 24px;
+  margin-top: auto;
+}
+
+/* Separator */
+.ui-separator {
+  flex-shrink: 0;
+  background: var(--border);
+}
+
+.ui-separator--horizontal {
+  width: 100%;
+  height: 1px;
+  margin: 16px 0;
+}
+
+.ui-separator--vertical {
+  width: 1px;
+  height: 100%;
+  min-height: 20px;
+  margin: 0 16px;
+}
+
+/* --------------------------------------------------------------------------
+   Site header
+   Sticky minimal navbar for HEIRLOOM.
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  padding: 0 32px;
+}
+
+@media (max-width: 1024px) {
+  .site-header__nav {
+    height: 64px;
+    padding: 0 20px;
+  }
+}
+
+.site-header__wordmark {
+  font-family: var(--heading);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--text-h);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 150ms ease;
+}
+
+.site-header__wordmark:hover,
+.site-header__wordmark:focus-visible {
+  color: var(--accent);
+}
+
+.site-header__wordmark:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.site-header__links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 1024px) {
+  .site-header__links {
+    display: none;
+  }
+}
+
+.site-header__link {
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.site-header__link:hover,
+.site-header__link:focus-visible {
+  color: var(--accent);
+}
+
+.site-header__link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-header__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--text-h);
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    background-color 150ms ease;
+}
+
+.site-header__icon:hover,
+.site-header__icon:focus-visible {
+  color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.site-header__icon:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.site-header__icon svg {
+  display: block;
+}
+/* --------------------------------------------------------------------------
+   Hero section
+   Premium editorial hero for HEIRLOOM.
+   -------------------------------------------------------------------------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 64px;
+  padding: 96px 32px;
+  text-align: left;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 64px 20px;
+  }
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+.hero__title {
+  margin: 0;
+  max-width: 14ch;
+}
+
+.hero__subheading {
+  font-size: 18px;
+  line-height: 160%;
+  color: var(--text);
+  max-width: 46ch;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.hero__visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__svg {
+  width: 100%;
+  height: auto;
+  max-width: 560px;
+  border-radius: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   Featured section
+   Editorial asymmetric split for HEIRLOOM.
+   -------------------------------------------------------------------------- */
+
+.featured {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  align-items: center;
+  gap: 64px;
+  padding: 96px 32px;
+  text-align: left;
+}
+
+@media (max-width: 1024px) {
+  .featured {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 64px 20px;
+  }
+}
+
+.featured__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.featured__image {
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  transition: transform 400ms ease;
+}
+
+.featured__image:hover {
+  transform: scale(1.02);
+}
+
+.featured__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.featured__eyebrow {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.featured__title {
+  margin: 0;
+  font-size: 24px;
+  line-height: 120%;
+  letter-spacing: -0.24px;
+  color: var(--text-h);
+}
+
+.featured__body {
+  font-size: 18px;
+  line-height: 160%;
+  color: var(--text);
+  max-width: 40ch;
+  margin: 0;
+}
+
+.featured__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.featured__cta:hover,
+.featured__cta:focus-visible {
+  color: color-mix(in srgb, var(--accent) 75%, #000);
+}
+
+.featured__cta:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.featured__cta svg {
+  display: block;
+  transition: transform 150ms ease;
+}
+
+.featured__cta:hover svg,
+.featured__cta:focus-visible svg {
+  transform: translateX(3px);
+}
+
+/* --------------------------------------------------------------------------
+   Collection section
+   3-column product grid for HEIRLOOM.
+   -------------------------------------------------------------------------- */
+
+.collection {
+  padding: 96px 32px;
+  text-align: left;
+}
+
+@media (max-width: 1024px) {
+  .collection {
+    padding: 64px 20px;
+  }
+}
+
+.collection__header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.collection__title {
+  margin: 0;
+  font-size: 32px;
+  letter-spacing: -0.64px;
+  line-height: 110%;
+}
+
+@media (max-width: 1024px) {
+  .collection__title {
+    font-size: 28px;
+  }
+}
+
+.collection__subtitle {
+  font-size: 18px;
+  line-height: 160%;
+  color: var(--text);
+  max-width: 48ch;
+  margin: 0;
+}
+
+.collection__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 24px;
+}
+
+@media (max-width: 1024px) {
+  .collection__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .collection__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Product card
+   -------------------------------------------------------------------------- */
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card__link {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 12px;
+  transition: transform 150ms ease;
+}
+
+.product-card__link:hover {
+  transform: translateY(-2px);
+}
+
+.product-card__link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.product-card__media {
+  position: relative;
+  aspect-ratio: 6 / 7;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--accent-bg);
+  transition: box-shadow 150ms ease;
+}
+
+.product-card__link:hover .product-card__media {
+  box-shadow: var(--shadow);
+}
+
+.product-card__image,
+.product-card__placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 300ms ease;
+}
+
+.product-card__link:hover .product-card__image,
+.product-card__link:hover .product-card__placeholder {
+  transform: scale(1.03);
+}
+
+.product-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+.product-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 4px;
+}
+
+.product-card__name {
+  margin: 0;
+  font-family: var(--heading);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: -0.18px;
+  color: var(--text-h);
+}
+
+.product-card__price {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  color: var(--text);
+}
+
+/* --------------------------------------------------------------------------
+   Craftsmanship section
+   Editorial process block for HEIRLOOM.
+   -------------------------------------------------------------------------- */
+
+.craftsmanship {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 64px;
+  padding: 96px 32px;
+  text-align: left;
+}
+
+@media (max-width: 1024px) {
+  .craftsmanship {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 64px 20px;
+  }
+}
+
+.craftsmanship__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.craftsmanship__image {
+  width: 100%;
+  height: auto;
+  max-height: 640px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  transition: transform 400ms ease;
+}
+
+.craftsmanship__image:hover {
+  transform: scale(1.02);
+}
+
+.craftsmanship__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.craftsmanship__eyebrow {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.craftsmanship__title {
+  margin: 0;
+  font-size: 24px;
+  line-height: 120%;
+  letter-spacing: -0.24px;
+  color: var(--text-h);
+}
+
+.craftsmanship__body {
+  font-size: 18px;
+  line-height: 160%;
+  color: var(--text);
+  max-width: 46ch;
+  margin: 0;
+}
+
+.craftsmanship__steps {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.craftsmanship__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.craftsmanship__step-num {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 9999px;
+}
+
+.craftsmanship__step-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.craftsmanship__step-title {
+  margin: 0;
+  font-family: var(--heading);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: -0.18px;
+  color: var(--text-h);
+}
+
+.craftsmanship__step-desc {
+  margin: 0;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--text);
+  max-width: 42ch;
+}
+
+/* --------------------------------------------------------------------------
+   Newsletter CTA
+   Centered email signup for HEIRLOOM.
+   -------------------------------------------------------------------------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.newsletter {
+  padding: 96px 32px;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .newsletter {
+    padding: 64px 20px;
+  }
+}
+
+.newsletter__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.newsletter__title {
+  margin: 0;
+}
+
+.newsletter__subtext {
+  font-size: 18px;
+  line-height: 160%;
+  color: var(--text);
+  max-width: 48ch;
+  margin: 0;
+}
+
+.newsletter__form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.newsletter__input {
+  flex: 1 1 240px;
+  height: 44px;
+  padding: 0 16px;
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--text-h);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.newsletter__input::placeholder {
+  color: var(--text);
+  opacity: 0.6;
+}
+
+.newsletter__input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--accent-border);
+}
+
+.newsletter__submit {
+  flex-shrink: 0;
+}
+
+.newsletter__disclaimer {
+  font-size: 14px;
+  line-height: 142%;
+  color: var(--text);
+  opacity: 0.8;
+  margin: 4px 0 0;
+}
+
+/* --------------------------------------------------------------------------
+   Site footer
+   Minimal 4-column footer for HEIRLOOM.
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 64px 32px 32px;
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+  text-align: left;
+}
+
+@media (max-width: 1024px) {
+  .site-footer {
+    padding: 48px 20px 24px;
+  }
+
+  .site-footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-footer__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.site-footer__wordmark {
+  font-family: var(--heading);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--text-h);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 150ms ease;
+}
+
+.site-footer__wordmark:hover,
+.site-footer__wordmark:focus-visible {
+  color: var(--accent);
+}
+
+.site-footer__wordmark:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.site-footer__description {
+  font-size: 14px;
+  line-height: 160%;
+  color: var(--text);
+  margin-top: 12px;
+  max-width: 32ch;
+}
+
+.site-footer__heading {
+  font-family: var(--heading);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-h);
+  margin: 0 0 16px;
+}
+
+.site-footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.site-footer__links a {
+  font-size: 14px;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.site-footer__links a:hover,
+.site-footer__links a:focus-visible {
+  color: var(--accent);
+}
+
+.site-footer__links a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.site-footer__social {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.site-footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--text-h);
+  border-radius: 8px;
+  transition:
+    color 150ms ease,
+    background-color 150ms ease;
+}
+
+.site-footer__social-link:hover,
+.site-footer__social-link:focus-visible {
+  color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.site-footer__social-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.site-footer__bottom {
+  border-top: 1px solid var(--border);
+  margin-top: 48px;
+  padding-top: 24px;
+  text-align: center;
+}
+
+.site-footer__bottom p {
+  font-size: 13px;
+  color: var(--text);
+}
+
+/* --------------------------------------------------------------------------
+   Landing page wrapper
+   Resets text-align to left while preserving the flex layout inside #root.
+   -------------------------------------------------------------------------- */
+
+.landing-page {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Marquee trust strip
+   -------------------------------------------------------------------------- */
+
+.marquee {
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.marquee__track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1024px) {
+  .marquee {
+    padding: 20px;
+  }
+
+  .marquee__track {
+    justify-content: center;
+    gap: 20px 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .marquee__track {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 24px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .marquee__track::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.marquee__item {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.marquee__dot {
+  margin-left: 32px;
+  color: var(--border);
+  user-select: none;
+}
+
+@media (max-width: 1024px) {
+  .marquee__dot {
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .marquee__dot {
+    margin-left: 24px;
+  }
 }
