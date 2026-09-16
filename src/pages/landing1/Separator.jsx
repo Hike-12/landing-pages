@@ -1,6 +1,10 @@
 /**
  * Separator primitive
  * Props: orientation ('horizontal' | 'vertical'), decorative (boolean)
+ *
+ * Clean 1px line for HEIRLOOM.
+ * - No decorative containers
+ * - Subtle border color
  */
 function Separator({
   orientation = 'horizontal',
@@ -8,13 +12,15 @@ function Separator({
   className = '',
   ...props
 }) {
+  const isHorizontal = orientation === 'horizontal'
+
   return (
     <div
       role={decorative ? 'none' : 'separator'}
       aria-orientation={decorative ? undefined : orientation}
       className={[
-        'ui-separator',
-        `ui-separator--${orientation}`,
+        'shrink-0 bg-border',
+        isHorizontal ? 'h-px w-full' : 'h-full w-px',
         className,
       ]
         .filter(Boolean)

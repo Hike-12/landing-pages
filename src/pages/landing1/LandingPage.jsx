@@ -9,9 +9,9 @@ import Footer from './Footer.jsx'
 
 function LandingPage() {
   return (
-    <div className="landing-page">
+    <>
       <Header />
-      <main>
+      <main className="min-h-screen bg-background text-foreground">
         <Hero />
         <Marquee />
         <Featured />
@@ -20,7 +20,7 @@ function LandingPage() {
         <Newsletter />
       </main>
       <Footer />
-    </div>
+    </>
   )
 }
 

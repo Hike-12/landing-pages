@@ -2,8 +2,10 @@
  * Button primitive
  * Contract: Button({ variant, size, children }): JSX.Element
  *
- * Variants: default (filled accent), secondary (outlined), ghost, link
- * Sizes:    default, sm, lg, icon
+ * Minimal editorial button for HEIRLOOM.
+ * - No shadow, no heavy borders
+ * - Sharp corners (no radius)
+ * - Clean Geist typography with tracking
  */
 function Button({
   variant = 'default',
@@ -12,13 +14,27 @@ function Button({
   className = '',
   ...props
 }) {
-  const base = 'ui-button'
-  const variantClass = `ui-button--${variant}`
-  const sizeClass = `ui-button--${size}`
+  const base =
+    'inline-flex items-center justify-center font-sans font-medium tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'
+
+  const variantClasses = {
+    default: 'bg-foreground text-background hover:bg-foreground/90',
+    secondary:
+      'border border-foreground/15 bg-transparent text-foreground hover:bg-foreground/[0.03]',
+    ghost: 'text-foreground hover:bg-foreground/[0.03]',
+    link: 'text-foreground underline-offset-4 hover:underline',
+  }
+
+  const sizeClasses = {
+    default: 'h-9 px-6 py-2.5 text-sm',
+    sm: 'h-8 px-4 py-2 text-xs',
+    lg: 'h-11 px-8 py-3 text-base',
+    icon: 'h-9 w-9',
+  }
 
   return (
     <button
-      className={[base, variantClass, sizeClass, className]
+      className={[base, variantClasses[variant], sizeClasses[size], className]
         .filter(Boolean)
         .join(' ')}
       {...props}

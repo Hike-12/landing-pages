@@ -2,10 +2,10 @@
  * Header
  * Contract: Header(): JSX.Element
  *
- * Sticky minimal navbar for HEIRLOOM.
- * - Wordmark left
- * - Centered nav links
- * - Cart + menu icons right
+ * Sticky minimal editorial navbar for HEIRLOOM.
+ * - Clean wordmark, no box
+ * - Uppercase nav links with generous tracking
+ * - Subtle bottom border only
  */
 function Header() {
   const navLinks = [
@@ -16,26 +16,37 @@ function Header() {
   ]
 
   return (
-    <header className="site-header">
-      <nav className="site-header__nav" aria-label="Primary">
-        <a href="/" className="site-header__wordmark" aria-label="HEIRLOOM home">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-sm">
+      <nav
+        className="flex items-center justify-between py-6 px-6"
+        aria-label="Primary"
+      >
+        <a
+          href="/"
+          className="font-serif text-xl tracking-tight text-foreground"
+          aria-label="HEIRLOOM home"
+        >
           HEIRLOOM
         </a>
 
-        <ul className="site-header__links" role="menubar">
+        <ul className="hidden md:flex items-center gap-8" role="menubar">
           {navLinks.map((link) => (
             <li key={link.label} role="none">
-              <a href={link.href} className="site-header__link" role="menuitem">
+              <a
+                href={link.href}
+                className="font-sans text-sm uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
+                role="menuitem"
+              >
                 {link.label}
               </a>
             </li>
           ))}
         </ul>
 
-        <div className="site-header__actions">
+        <div className="flex items-center gap-4">
           <a
             href="#cart"
-            className="site-header__icon"
+            className="text-muted-foreground hover:text-foreground transition-colors"
             aria-label="Open cart"
           >
             <svg
@@ -58,7 +69,7 @@ function Header() {
           </a>
           <button
             type="button"
-            className="site-header__icon"
+            className="text-muted-foreground hover:text-foreground transition-colors md:hidden"
             aria-label="Open menu"
           >
             <svg
