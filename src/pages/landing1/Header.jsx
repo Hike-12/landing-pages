@@ -1,3 +1,5 @@
+import ThemeToggle from './ThemeToggle'
+
 /**
  * Header
  * Contract: Header(): JSX.Element
@@ -44,6 +46,7 @@ function Header() {
         </ul>
 
         <div className="flex items-center gap-4">
+          <ThemeToggle />
           <a
             href="#cart"
             className="text-muted-foreground hover:text-foreground transition-colors"

@@ -6,11 +6,29 @@
  * - No background box, no border container
  * - Inline flex form with bottom-border-only input
  * - Minimal submit button, generous whitespace
+ * - Refined inline envelope illustration suggesting mail and exclusivity
  */
 function Newsletter() {
   return (
     <section className="py-24 px-6" aria-labelledby="newsletter-heading">
       <div className="max-w-xl mx-auto text-center">
+        <svg
+          width="64"
+          height="64"
+          viewBox="0 0 64 64"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="mx-auto mb-8 text-muted-foreground/50"
+          aria-hidden="true"
+        >
+          <rect x="10" y="20" width="44" height="28" rx="1" />
+          <path d="M10 20L32 36L54 20" />
+          <circle cx="32" cy="36" r="3.5" />
+          <path d="M30 36H34" />
+        </svg>
         <h2
           id="newsletter-heading"
           className="font-serif text-2xl md:text-3xl font-light tracking-tight text-foreground"

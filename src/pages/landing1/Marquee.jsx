@@ -28,9 +28,16 @@ function Marquee() {
             <span className="font-sans text-sm uppercase tracking-widest text-muted-foreground">
               {value}
             </span>
-            <span className="text-muted-foreground/40" aria-hidden="true">
-              |
-            </span>
+            <svg
+              width="4"
+              height="4"
+              viewBox="0 0 4 4"
+              fill="currentColor"
+              className="text-muted-foreground/40"
+              aria-hidden="true"
+            >
+              <circle cx="2" cy="2" r="2" />
+            </svg>
           </span>
         ))}
       </div>

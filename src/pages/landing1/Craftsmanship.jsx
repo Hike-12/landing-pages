@@ -38,7 +38,7 @@ function Craftsmanship() {
           <img
             src="/images/craftsmanship.jpg"
             alt="Artisan hand-stitching leather in the atelier"
-            className="w-full rounded-sm object-cover"
+            className="aspect-square w-full rounded-sm object-cover"
             loading="lazy"
           />
         </div>

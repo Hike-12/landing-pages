@@ -54,12 +54,12 @@ function ProductCard({ name, price, badge, image }) {
  */
 function Collection() {
   const products = [
-    { name: 'Heritage Tote', price: '$480', badge: 'New' },
-    { name: 'Atelier Briefcase', price: '$720' },
-    { name: 'Weekender Duffle', price: '$640', badge: 'Limited' },
-    { name: 'Slim Card Wallet', price: '$120' },
-    { name: 'Field Belt', price: '$195', badge: 'New' },
-    { name: 'Daily Crossbody', price: '$360' },
+    { name: 'Heritage Tote', price: '$480', badge: 'New', image: '/images/collection-1.jpg' },
+    { name: 'Atelier Briefcase', price: '$720', image: '/images/collection-2.jpg' },
+    { name: 'Weekender Duffle', price: '$640', badge: 'Limited', image: '/images/collection-3.jpg' },
+    { name: 'Slim Card Wallet', price: '$120', image: '/images/collection-1.jpg' },
+    { name: 'Field Belt', price: '$195', badge: 'New', image: '/images/collection-2.jpg' },
+    { name: 'Daily Crossbody', price: '$360', image: '/images/collection-3.jpg' },
   ]
 
   return (
