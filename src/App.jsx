@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import LandingPage from './pages/landing1/LandingPage'
+import LandingPage2 from './pages/landing2/LandingPage'
 
 function App() {
   useEffect(() => {
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/landing1" element={<LandingPage />} />
+        <Route path="/landing2" element={<LandingPage2 />} />
       </Routes>
     </BrowserRouter>
   )

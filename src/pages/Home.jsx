@@ -27,6 +27,12 @@ function Home() {
         >
           HEIRLOOM Landing Page
         </Link>
+        <Link
+          to="/landing2"
+          className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium tracking-wide text-foreground border border-foreground/15 hover:border-foreground/30 hover:bg-foreground/[0.03] transition-colors"
+        >
+          NEXUS Landing Page
+        </Link>
       </nav>
     </main>
   )
