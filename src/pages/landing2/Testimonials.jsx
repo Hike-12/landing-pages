@@ -2,10 +2,11 @@
  * Testimonials
  * Contract: Testimonials(): JSX.Element
  *
- * Social proof section for NEXUS.
- * - Horizontal scroll row on mobile, flex row on desktop
- * - Bordered cards with avatar initials, quote, name, and role
- * - No images, pure typography and geometry
+ * Swiss-style social proof for NEXUS.
+ * - Full-width large quotes, no card containers
+ * - Tight leading, generous vertical rhythm
+ * - Asymmetric attribution: name small, company smaller
+ * - Thin top border as the only structural element
  */
 function Testimonials() {
   const testimonials = [
@@ -13,60 +14,56 @@ function Testimonials() {
       quote:
         'NEXUS cut our release cycle in half. The workflow is so intuitive that the whole team adopted it in a week.',
       name: 'Sarah Chen',
-      role: 'VP of Engineering',
-      initials: 'SC',
+      company: 'Linear',
     },
     {
       quote:
         'Finally, a platform that brings design and development into the same rhythm. Our handoffs are seamless now.',
       name: 'Marcus Okafor',
-      role: 'Product Lead',
-      initials: 'MO',
+      company: 'Vercel',
     },
     {
       quote:
         'The modular approach let us ship a complete redesign without touching a single legacy component.',
       name: 'Elena Voss',
-      role: 'Design Director',
-      initials: 'EV',
+      company: 'Figma',
     },
   ]
 
   return (
-    <section className="w-full px-6 py-24" aria-labelledby="testimonials-heading">
+    <section className="w-full px-6 py-24 md:py-32" aria-labelledby="testimonials-heading">
       <div className="mx-auto max-w-6xl">
         <span className="mb-4 block font-sans text-xs font-medium uppercase tracking-widest text-muted-foreground">
           Trusted by teams
         </span>
         <h2
           id="testimonials-heading"
-          className="font-sans text-3xl font-bold tracking-tight text-foreground md:text-4xl"
+          className="font-sans text-3xl font-bold uppercase tracking-tight text-foreground md:text-4xl"
         >
-          Loved by builders
+          Voices
         </h2>
 
-        <div className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:overflow-visible">
+        <div className="mt-16 md:mt-24">
           {testimonials.map((item) => (
             <article
               key={item.name}
-              className="min-w-[280px] flex-1 snap-start rounded-lg border border-border bg-card p-6"
+              className="border-t border-border py-16 md:py-24"
             >
-              <p className="text-lg italic leading-relaxed text-card-foreground">
-                &ldquo;{item.quote}&rdquo;
-              </p>
-              <div className="mt-6 flex items-center gap-3">
-                <span
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-sm font-semibold text-primary"
-                  aria-hidden="true"
-                >
-                  {item.initials}
-                </span>
-                <div>
-                  <p className="font-sans font-semibold text-card-foreground">
-                    {item.name}
+              <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end md:gap-8">
+                <blockquote className="md:col-span-10">
+                  <p className="font-sans text-3xl font-medium leading-[1.1] tracking-tight text-foreground md:text-4xl lg:text-[2.75rem]">
+                    &ldquo;{item.quote}&rdquo;
                   </p>
-                  <p className="text-sm text-muted-foreground">{item.role}</p>
-                </div>
+                </blockquote>
+
+                <footer className="flex flex-col gap-0.5 md:col-span-2 md:text-right">
+                  <span className="font-sans text-sm font-semibold uppercase tracking-wide text-foreground">
+                    {item.name}
+                  </span>
+                  <span className="font-sans text-xs uppercase tracking-widest text-muted-foreground">
+                    {item.company}
+                  </span>
+                </footer>
               </div>
             </article>
           ))}

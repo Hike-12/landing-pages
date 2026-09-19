@@ -4,8 +4,9 @@
  *
  * Minimal editorial button for HEIRLOOM.
  * - No shadow, no heavy borders
- * - Sharp corners (no radius)
+ * - Sharp corners (rounded-none)
  * - Clean Geist typography with tracking
+ * - Refined transitions using editorial easing
  */
 function Button({
   variant = 'default',
@@ -15,7 +16,7 @@ function Button({
   ...props
 }) {
   const base =
-    'inline-flex items-center justify-center font-sans font-medium tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'
+    'inline-flex items-center justify-center rounded-none font-sans font-medium tracking-wide transition-colors duration-300 ease-out focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/30 disabled:pointer-events-none disabled:opacity-50'
 
   const variantClasses = {
     default: 'bg-foreground text-background hover:bg-foreground/90',

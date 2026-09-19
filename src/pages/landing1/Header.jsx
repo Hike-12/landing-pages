@@ -36,7 +36,7 @@ function Header() {
             <li key={link.label} role="none">
               <a
                 href={link.href}
-                className="font-sans text-sm uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
+                className="relative font-sans text-sm uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-out hover:after:w-full"
                 role="menuitem"
               >
                 {link.label}

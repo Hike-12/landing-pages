@@ -2,51 +2,41 @@
  * CTA
  * Contract: CTA(): JSX.Element
  *
- * Full-width call-to-action banner for NEXUS.
- * - Primary background with primary-foreground text
- * - Single prominent inverted button
- * - Subtle repeating geometric SVG texture
- * - Contrasts with landing1's understated Newsletter section
+ * Stark dark call-to-action band for NEXUS.
+ * - Full-bleed abstract texture behind a solid dark scrim
+ * - Massive tight-tracking headline, no sub-copy noise
+ * - One minimal inverted button
+ * - No gradients, no decorative shapes
  */
 function CTA() {
   return (
-    <section className="relative isolate w-full overflow-hidden bg-primary px-6 py-20 md:py-28">
-      {/* Subtle geometric background texture */}
-      <svg
-        className="absolute inset-0 -z-10 h-full w-full text-primary-foreground/[0.08]"
-        aria-hidden="true"
-        preserveAspectRatio="none"
-      >
-        <defs>
-          <pattern
-            id="cta-dots"
-            width="48"
-            height="48"
-            patternUnits="userSpaceOnUse"
-          >
-            <circle cx="24" cy="24" r="2" fill="currentColor" />
-            <circle cx="0" cy="0" r="1" fill="currentColor" />
-            <circle cx="48" cy="0" r="1" fill="currentColor" />
-            <circle cx="0" cy="48" r="1" fill="currentColor" />
-            <circle cx="48" cy="48" r="1" fill="currentColor" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#cta-dots)" />
-      </svg>
+    <section className="dark relative isolate w-full overflow-hidden px-6 py-28 md:py-36 lg:py-44">
+      {/* Abstract texture */}
+      <img
+        src="/images/nexus-abstract.jpg"
+        alt=""
+        className="absolute inset-0 -z-20 h-full w-full object-cover"
+        loading="lazy"
+      />
 
-      <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-        <h2 className="font-sans text-3xl font-bold tracking-tight text-primary-foreground md:text-5xl">
-          Ready to start?
+      {/* Solid dark scrim for contrast — no gradients */}
+      <div
+        className="absolute inset-0 -z-10 bg-background/85"
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto w-full max-w-6xl">
+        <h2 className="max-w-4xl font-sans text-5xl font-bold leading-[0.9] tracking-tighter text-foreground md:text-7xl lg:text-8xl">
+          Set the next
+          <br />
+          standard.
         </h2>
-        <p className="mt-4 max-w-xl text-lg leading-relaxed text-primary-foreground/80 md:text-xl">
-          Join thousands of teams shipping faster with NEXUS. Get started free
-          today — no credit card required.
-        </p>
+
         <a
           href="#pricing"
-          className="mt-10 inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold tracking-wide text-primary bg-primary-foreground transition-colors hover:bg-primary-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/50"
+          className="mt-12 inline-flex items-center justify-center rounded-none border border-foreground bg-foreground px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-widest text-background transition-colors duration-300 ease-out hover:bg-transparent hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/30"
         >
-          Get Started
+          Start Building
         </a>
       </div>
     </section>

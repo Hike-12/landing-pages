@@ -1,31 +1,47 @@
-import { useState } from 'react'
+import { useCallback, useSyncExternalStore } from 'react'
 
 /**
  * ThemeToggle
  * Contract: ThemeToggle(): JSX.Element
  *
  * Accessible dark/light theme toggle.
- * - Reads initial mode from the document root class
+ * - Subscribes to the document root .dark class so state is always in sync
  * - Toggles the .dark class and persists the choice to localStorage
  */
+function subscribeDarkClass(callback) {
+  const observer = new MutationObserver(callback)
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class'],
+  })
+  return () => observer.disconnect()
+}
+
+function getDarkClassSnapshot() {
+  return document.documentElement.classList.contains('dark')
+}
+
+function getDarkClassServerSnapshot() {
+  return false
+}
+
 function ThemeToggle() {
-  const [isDark, setIsDark] = useState(() =>
-    document.documentElement.classList.contains('dark')
+  const isDark = useSyncExternalStore(
+    subscribeDarkClass,
+    getDarkClassSnapshot,
+    getDarkClassServerSnapshot
   )
 
-  const toggleTheme = () => {
-    const next = !isDark
-    setIsDark(next)
-
+  const toggleTheme = useCallback(() => {
     const root = document.documentElement
-    if (next) {
-      root.classList.add('dark')
-      localStorage.theme = 'dark'
-    } else {
+    if (isDark) {
       root.classList.remove('dark')
       localStorage.theme = 'light'
+    } else {
+      root.classList.add('dark')
+      localStorage.theme = 'dark'
     }
-  }
+  }, [isDark])
 
   return (
     <button

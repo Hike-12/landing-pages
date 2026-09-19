@@ -3,23 +3,26 @@
  * Contract: Marquee(): JSX.Element
  *
  * Trust strip with brand values for HEIRLOOM.
- * - No background box or border
+ * - Hairline top and bottom borders for quiet structure
  * - Low-contrast muted text
- * - Continuous horizontal scroll layout
+ * - Slow, continuous horizontal scroll
  */
 function Marquee() {
   const values = [
-    'Hand-stitched in Italy',
-    'Full-grain Leather',
-    'Lifetime Warranty',
-    'Carbon Neutral Shipping',
+    'Hand-stitched in Tuscany',
+    'Vegetable-tanned hides',
+    'Lifetime repair guarantee',
+    'Carbon-neutral shipping',
   ]
 
   const items = [...values, ...values]
 
   return (
-    <section className="py-16 md:py-20 overflow-hidden" aria-label="Brand values">
-      <div className="flex w-max animate-[marquee_20s_linear_infinite] will-change-transform">
+    <section
+      className="w-full overflow-hidden border-y border-border/60 py-10 md:py-12"
+      aria-label="Brand values"
+    >
+      <div className="flex w-max animate-[marquee_30s_linear_infinite] will-change-transform">
         {items.map((value, index) => (
           <span
             key={`${value}-${index}`}

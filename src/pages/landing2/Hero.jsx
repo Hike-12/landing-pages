@@ -2,48 +2,46 @@
  * Hero
  * Contract: Hero(): JSX.Element
  *
- * Bold geometric hero for NEXUS.
- * - Centered, large sans-serif headline
- * - Floating polygon accent behind the text
- * - Primary solid + outline secondary CTAs
- * - No images, pure typography and SVG shapes
+ * Stark full-bleed hero for NEXUS.
+ * - Dark editorial background with inverted foreground
+ * - Full-bleed nexus-hero.jpg behind a directional gradient
+ * - Massive tight-tracking headline, single descriptor, one CTA
+ * - Asymmetric text placement with generous negative space
  */
 function Hero() {
   return (
-    <section className="relative isolate w-full overflow-hidden px-6 py-24 md:py-32 lg:py-40">
-      {/* Floating geometric accent */}
-      <svg
-        className="absolute inset-0 -z-10 mx-auto h-full w-full max-w-3xl text-primary/15"
-        viewBox="0 0 600 600"
-        fill="currentColor"
-        aria-hidden="true"
-        preserveAspectRatio="xMidYMid slice"
-      >
-        <polygon points="300,60 540,210 480,480 120,480 60,210" />
-      </svg>
+    <section className="dark relative isolate flex min-h-[90vh] w-full items-end bg-background text-foreground md:items-center">
+      {/* Full-bleed image */}
+      <img
+        src="/images/nexus-hero.jpg"
+        alt="Abstract architectural structure in low light"
+        className="absolute inset-0 -z-20 h-full w-full object-cover"
+        loading="eager"
+      />
 
-      <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
-        <h1 className="font-sans text-5xl font-bold tracking-tight text-foreground md:text-7xl">
-          Build Faster.
-          <br />
-          Ship Smarter.
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-          NEXUS gives your team a unified platform to design, deploy, and scale
-          products with precision — no friction, no guesswork.
-        </p>
-        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
+      {/* Directional dark gradient for readability */}
+      <div
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-background via-background/85 to-background/40"
+        aria-hidden="true"
+      />
+
+      <div className="relative w-full px-6 pb-20 pt-32 md:py-0">
+        <div className="mx-auto w-full max-w-6xl">
+          <h1 className="max-w-4xl font-sans text-6xl font-bold leading-[0.9] tracking-tighter text-foreground md:text-7xl">
+            Build the next
+            <br />
+            standard.
+          </h1>
+
+          <p className="mt-8 max-w-xl font-sans text-lg font-medium leading-snug text-muted-foreground md:text-xl">
+            Precision infrastructure for teams that refuse to compromise.
+          </p>
+
           <a
             href="#features"
-            className="inline-flex items-center justify-center px-8 py-3 text-sm font-semibold tracking-wide text-primary-foreground bg-primary transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="mt-10 inline-flex items-center justify-center rounded-none bg-foreground px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-widest text-background transition-colors duration-300 ease-out hover:bg-foreground/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/30"
           >
             Start Building
-          </a>
-          <a
-            href="#pricing"
-            className="inline-flex items-center justify-center px-8 py-3 text-sm font-semibold tracking-wide text-foreground border border-foreground/20 transition-colors hover:bg-foreground/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            View Pricing
           </a>
         </div>
       </div>

@@ -2,27 +2,29 @@ import Badge from './Badge.jsx'
 
 /**
  * ProductCard
- * Contract: ProductCard({ name, price, badge, image }): JSX.Element
+ * Contract: ProductCard({ name, price, badge, image, size }): JSX.Element
  *
  * Premium product card for the Collection grid.
  * - No border, no shadow, no background box
- * - Whitespace-driven layout
- * - Optional minimal badge
+ * - Bare image with caption overlay
+ * - Slow, refined hover scale
  */
-function ProductCard({ name, price, badge, image }) {
+function ProductCard({ name, price, badge, image, size = 'default' }) {
+  const aspect = size === 'large' ? 'aspect-[4/5]' : 'aspect-[3/4]'
+
   return (
-    <article className="group">
-      <a href="#product" aria-label={`View ${name}`}>
-        <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+    <article className="group h-full">
+      <a href="#product" aria-label={`View ${name}`} className="block h-full">
+        <div className={`relative ${aspect} w-full overflow-hidden`}>
           {image ? (
             <img
               src={image}
               alt={name}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="eager"
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center">
+            <div className="flex h-full w-full items-center justify-center bg-muted">
               <span className="text-sm text-muted-foreground">No image</span>
             </div>
           )}
@@ -31,12 +33,12 @@ function ProductCard({ name, price, badge, image }) {
               <Badge>{badge}</Badge>
             </div>
           )}
-        </div>
-        <div className="mt-4 space-y-1">
-          <h3 className="font-sans text-base font-medium text-foreground">
-            {name}
-          </h3>
-          <p className="font-sans text-sm text-muted-foreground">{price}</p>
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-5 pt-16">
+            <h3 className="font-sans text-base font-medium text-white">
+              {name}
+            </h3>
+            <p className="mt-0.5 font-sans text-sm text-white/80">{price}</p>
+          </div>
         </div>
       </a>
     </article>
@@ -48,9 +50,9 @@ function ProductCard({ name, price, badge, image }) {
  * Contract: Collection(): JSX.Element
  *
  * Editorial product grid for HEIRLOOM.
- * - Responsive: 3 cols -> 2 cols -> 1 col
- * - Generous gap-8 / gap-12 whitespace
- * - No background boxes or borders
+ * - Asymmetric layout: one large feature, two smaller companions
+ * - Bare images with caption overlays
+ * - No backgrounds, borders, or shadows
  */
 function Collection() {
   const products = [
@@ -62,24 +64,45 @@ function Collection() {
     { name: 'Daily Crossbody', price: '$360', image: '/images/collection-3.jpg' },
   ]
 
+  const [featured, ...rest] = products
+
   return (
-    <section id="collection" className="py-24 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="collection" className="w-full px-6 py-24">
+      <div className="mx-auto max-w-6xl">
         <div className="mb-12">
-          <h2 className="font-serif text-3xl text-foreground">
+          <span className="mb-3 block font-sans text-xs font-medium uppercase tracking-widest text-muted-foreground">
             The Collection
+          </span>
+          <h2 className="font-serif text-3xl text-foreground md:text-4xl">
+            Six essential silhouettes
           </h2>
-          <p className="mt-4 font-sans text-lg text-muted-foreground max-w-xl">
-            Six essential silhouettes, each cut from full-grain vegetable-tanned
-            leather.
+          <p className="mt-4 max-w-xl font-sans text-lg leading-relaxed text-muted-foreground">
+            Each piece is cut from full-grain vegetable-tanned leather and shaped
+            to age gracefully with you.
           </p>
         </div>
+
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
+          className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-5"
           role="list"
         >
-          {products.map((product) => (
-            <div key={product.name} role="listitem">
+          {/* Large featured item */}
+          <div className="md:col-span-7" role="listitem">
+            <ProductCard {...featured} size="large" />
+          </div>
+
+          {/* Two smaller items stacked */}
+          <div className="grid grid-cols-1 gap-6 md:col-span-5 md:gap-5">
+            {rest.slice(0, 2).map((product) => (
+              <div key={product.name} role="listitem">
+                <ProductCard {...product} />
+              </div>
+            ))}
+          </div>
+
+          {/* Remaining row */}
+          {rest.slice(2).map((product) => (
+            <div key={product.name} className="md:col-span-4" role="listitem">
               <ProductCard {...product} />
             </div>
           ))}

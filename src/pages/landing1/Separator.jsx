@@ -4,7 +4,7 @@
  *
  * Clean 1px line for HEIRLOOM.
  * - No decorative containers
- * - Subtle border color
+ * - Subtle border color at reduced opacity
  */
 function Separator({
   orientation = 'horizontal',
@@ -18,8 +18,9 @@ function Separator({
     <div
       role={decorative ? 'none' : 'separator'}
       aria-orientation={decorative ? undefined : orientation}
+      aria-hidden={decorative}
       className={[
-        'shrink-0 bg-border',
+        'shrink-0 bg-border/70',
         isHorizontal ? 'h-px w-full' : 'h-full w-px',
         className,
       ]

@@ -2,45 +2,28 @@
  * Newsletter
  * Contract: Newsletter(): JSX.Element
  *
- * Centered email CTA for HEIRLOOM.
- * - No background box, no border container
- * - Inline flex form with bottom-border-only input
- * - Minimal submit button, generous whitespace
- * - Refined inline envelope illustration suggesting mail and exclusivity
+ * Minimal email CTA for HEIRLOOM.
+ * - No card wrapper, no background box
+ * - Single-line input with bottom-border-only styling
+ * - Minimal arrow submit button
+ * - Generous whitespace, muted typography
  */
 function Newsletter() {
   return (
-    <section className="py-24 px-6" aria-labelledby="newsletter-heading">
-      <div className="max-w-xl mx-auto text-center">
-        <svg
-          width="64"
-          height="64"
-          viewBox="0 0 64 64"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="mx-auto mb-8 text-muted-foreground/50"
-          aria-hidden="true"
-        >
-          <rect x="10" y="20" width="44" height="28" rx="1" />
-          <path d="M10 20L32 36L54 20" />
-          <circle cx="32" cy="36" r="3.5" />
-          <path d="M30 36H34" />
-        </svg>
+    <section className="w-full px-6 py-24 md:py-32" aria-labelledby="newsletter-heading">
+      <div className="mx-auto max-w-xl text-center">
+        <span className="mb-4 block font-sans text-xs font-medium uppercase tracking-widest text-muted-foreground">
+          The Atelier List
+        </span>
         <h2
           id="newsletter-heading"
-          className="font-serif text-2xl md:text-3xl font-light tracking-tight text-foreground"
+          className="font-serif text-2xl font-light tracking-tight text-foreground md:text-3xl"
         >
-          Join the Atelier
+          New releases, studio notes, and stories from the workbench.
         </h2>
-        <p className="mt-4 text-lg text-muted-foreground font-sans leading-relaxed">
-          Be the first to see new releases, studio notes, and stories from the
-          workbench--delivered with care, never clutter.
-        </p>
+
         <form
-          className="mt-8 inline-flex items-end gap-4 w-full max-w-md"
+          className="mx-auto mt-10 flex w-full max-w-md items-center"
           onSubmit={(e) => e.preventDefault()}
           aria-label="Newsletter signup"
         >
@@ -53,16 +36,33 @@ function Newsletter() {
             name="email"
             placeholder="your@email.com"
             required
-            className="flex-1 border-0 border-b border-input bg-transparent py-2 text-foreground placeholder:text-muted-foreground transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:border-foreground"
+            className="flex-1 border-0 border-b border-border bg-transparent py-3 pr-4 font-sans text-base text-foreground placeholder:text-muted-foreground transition-colors focus-visible:border-foreground focus-visible:outline-none"
           />
           <button
             type="submit"
-            className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium tracking-wide text-background bg-foreground transition-colors hover:bg-foreground/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="group -ml-px flex items-center justify-center p-3 text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            aria-label="Subscribe"
           >
-            Subscribe
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              className="transition-transform duration-300 ease-out group-hover:translate-x-0.5"
+            >
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
           </button>
         </form>
-        <p className="mt-4 text-xs text-muted-foreground font-sans">
+
+        <p className="mt-5 font-sans text-xs text-muted-foreground">
           No spam. Unsubscribe anytime.
         </p>
       </div>

@@ -3,73 +3,75 @@
  * Contract: Craftsmanship(): JSX.Element
  *
  * Editorial process section for HEIRLOOM.
- * - Large image + adjacent text panel
- * - Numbered process steps with no visible boxes
- * - Sharp image, generous whitespace, no gradients
+ * - Full-bleed image with a floating minimal text panel
+ * - Panel offset to the side, overlapping the image
+ * - Static editorial layout for cross-browser stability
+ *   (scroll-driven zoom omitted due to limited browser support)
  */
 function Craftsmanship() {
   const steps = [
     {
       num: '01',
       title: 'Selection',
-      desc: 'We source full-grain hides from heritage tanneries in Tuscany, inspecting each hide by hand for grain consistency and natural character.',
+      desc: 'Full-grain hides from heritage tanneries in Tuscany, inspected by hand.',
     },
     {
       num: '02',
       title: 'Cutting',
-      desc: 'Every panel is cut with precision knives guided by patterns refined over decades. No two pieces are identical.',
+      desc: 'Panels cut with precision knives guided by decades-old patterns.',
     },
     {
       num: '03',
       title: 'Stitching',
-      desc: 'Using waxed linen thread and traditional saddle stitches, our artisans build seams that outlast machine stitching.',
+      desc: 'Waxed linen thread and traditional saddle stitches.',
     },
     {
       num: '04',
       title: 'Finishing',
-      desc: 'Edges are burnished, conditioned, and polished with natural beeswax to develop a patina unique to its owner.',
+      desc: 'Edges burnished and polished with natural beeswax.',
     },
   ]
 
   return (
-    <section className="w-full py-24 px-6" id="craftsmanship">
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-start gap-12 lg:flex-row lg:gap-16">
-        <div className="w-full lg:w-1/2">
-          <img
-            src="/images/craftsmanship.jpg"
-            alt="Artisan hand-stitching leather in the atelier"
-            className="aspect-square w-full rounded-sm object-cover"
-            loading="lazy"
-          />
-        </div>
+    <section className="relative w-full" id="craftsmanship">
+      {/* Full-bleed image */}
+      <div className="relative h-[70vh] min-h-[480px] w-full overflow-hidden">
+        <img
+          src="/images/craftsmanship.jpg"
+          alt="Artisan hand-stitching leather in the atelier"
+          className="h-full w-full object-cover"
+          loading="eager"
+        />
+      </div>
 
-        <div className="flex w-full flex-col items-start lg:w-1/2">
-          <span className="mb-4 font-sans text-xs font-medium uppercase tracking-widest text-muted-foreground">
+      {/* Floating minimal text panel */}
+      <div className="mx-auto w-full max-w-6xl px-6">
+        <div className="relative -mt-32 ml-auto w-full max-w-md bg-background/95 p-8 backdrop-blur-sm md:-mt-48 md:p-10">
+          <span className="mb-3 block font-sans text-xs font-medium uppercase tracking-widest text-muted-foreground">
             Our Process
           </span>
           <h2 className="mb-4 font-serif text-3xl text-foreground">
             Four Stages of Craft
           </h2>
-          <p className="mb-10 font-sans text-lg leading-relaxed text-muted-foreground">
-            Each HEIRLOOM piece passes through the hands of a single artisan from
-            start to finish. This continuity of care ensures every stitch, edge,
-            and surface meets a standard that machines cannot replicate.
+          <p className="mb-8 font-sans text-base leading-relaxed text-muted-foreground">
+            Every HEIRLOOM piece is shaped by a single artisan from start to
+            finish. That continuity of care is what machines cannot replicate.
           </p>
 
-          <ol className="w-full space-y-8">
+          <ol className="w-full space-y-5">
             {steps.map((step) => (
-              <li key={step.num} className="flex gap-6">
+              <li key={step.num} className="flex gap-4">
                 <span
-                  className="mt-0.5 font-sans text-sm font-medium tabular-nums text-muted-foreground"
+                  className="mt-0.5 font-sans text-xs font-medium tabular-nums text-muted-foreground"
                   aria-hidden="true"
                 >
                   {step.num}
                 </span>
                 <div>
-                  <h3 className="mb-1 font-serif text-2xl text-foreground">
+                  <h3 className="font-serif text-lg leading-tight text-foreground">
                     {step.title}
                   </h3>
-                  <p className="font-sans text-lg leading-relaxed text-muted-foreground">
+                  <p className="mt-0.5 font-sans text-sm leading-relaxed text-muted-foreground">
                     {step.desc}
                   </p>
                 </div>
