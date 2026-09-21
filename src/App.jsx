@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import LandingPage from './pages/landing1/LandingPage'
 import LandingPage2 from './pages/landing2/LandingPage'
+import LandingPage3 from './pages/landing3/LandingPage'
 
 function App() {
   useEffect(() => {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/landing1" element={<LandingPage />} />
         <Route path="/landing2" element={<LandingPage2 />} />
+        <Route path="/landing3" element={<LandingPage3 />} />
       </Routes>
     </BrowserRouter>
   )

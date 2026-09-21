@@ -34,6 +34,16 @@ function Home() {
       imageAlt: 'Abstract architectural structure in low light',
       accent: 'from-slate-950/60 to-zinc-900/30',
     },
+    {
+      num: '03',
+      title: 'FLUX',
+      subtitle: 'Digital Craft Studio',
+      description: 'An aurora of digital craft. Dark, immersive, ever-shifting.',
+      href: '/landing3',
+      image: '/images/flux-aurora.jpg',
+      imageAlt: 'Aurora light waves drifting across a dark sky',
+      accent: 'from-teal-950/50 via-violet-950/40 to-slate-950/20',
+    },
   ]
 
   return (
@@ -50,7 +60,7 @@ function Home() {
             </h1>
           </div>
           <span className="hidden font-sans text-sm text-muted-foreground md:block">
-            02 projects
+            03 projects
           </span>
         </div>
       </header>
