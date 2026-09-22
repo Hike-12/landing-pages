@@ -3,20 +3,20 @@
  * Contract: CTA(): JSX.Element
  *
  * FLUX final call-to-action.
- * - Horizontal aurora gradient band
+ * - Solid charcoal band, no gradient
  * - Centered bold headline
- * - Gradient pill button with simple opacity hover
+ * - Solid button with clear hover state
  */
 function CTA() {
   return (
-    <section className="bg-gradient-to-r from-teal-950 via-slate-900 to-violet-950 py-32">
-      <div className="mx-auto flex max-w-4xl flex-col items-center px-6 text-center">
+    <section className="bg-slate-950 py-32">
+      <div className="mx-auto flex max-w-4xl flex-col items-start px-6 md:px-12">
         <h2 className="text-4xl font-bold tracking-tighter text-white md:text-6xl">
           Start your next chapter
         </h2>
         <button
           type="button"
-          className="mt-8 rounded-full bg-gradient-to-r from-teal-400 to-violet-500 px-8 py-4 font-semibold text-slate-950 transition-opacity hover:opacity-90"
+          className="mt-8 rounded-sm bg-white px-8 py-4 font-semibold text-black transition-colors hover:bg-neutral-200"
         >
           Book a discovery call
         </button>

@@ -3,21 +3,30 @@
  * Contract: Philosophy(): JSX.Element
  *
  * FLUX creative-studio philosophy statement.
- * - Dark, immersive section with no cards, icons, or buttons
- * - Large editorial statement split across two columns on desktop
- * - Pure typography and negative space
+ * - Solid charcoal ground with no gradients or decorative effects
+ * - Large left-aligned editorial quote with generous whitespace
+ * - Hierarchy built from size and weight, not color fades
  */
 function Philosophy() {
   return (
-    <section className="bg-slate-950 py-32 px-6">
-      <div className="mx-auto max-w-5xl">
-        <p className="text-3xl font-medium leading-tight tracking-tight text-slate-200 md:columns-2 md:gap-12 md:text-5xl">
-          We believe the best work lives in the tension between intuition and
-          precision. Every project is an invitation to question defaults,
-          embrace ambiguity, and craft experiences that feel inevitable yet
-          impossible to ignore. Form follows feeling. Function follows
-          obsession. The result is not a product, but a point of view.
-        </p>
+    <section className="bg-slate-950 px-6 py-32 md:py-40">
+      <div className="mx-auto max-w-6xl">
+        <div className="max-w-4xl">
+          <p className="mb-8 text-sm font-medium uppercase tracking-widest text-neutral-400">
+            Philosophy
+          </p>
+
+          <blockquote className="text-4xl font-semibold leading-[1.1] tracking-tight text-white md:text-6xl lg:text-7xl">
+            The best work lives in the tension between intuition and precision.
+          </blockquote>
+
+          <p className="mt-10 max-w-2xl text-lg leading-relaxed text-neutral-400 md:text-xl">
+            Every project is an invitation to question defaults, embrace
+            ambiguity, and craft experiences that feel inevitable yet
+            impossible to ignore. Form follows feeling. Function follows
+            obsession. The result is not a product, but a point of view.
+          </p>
+        </div>
       </div>
     </section>
   )
