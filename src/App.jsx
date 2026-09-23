@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import LandingPage from './pages/landing1/LandingPage'
 import LandingPage2 from './pages/landing2/LandingPage'
 import LandingPage3 from './pages/landing3/LandingPage'
+import LandingPage4 from './pages/landing4/LandingPage'
 
 function App() {
   useEffect(() => {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/landing1" element={<LandingPage />} />
         <Route path="/landing2" element={<LandingPage2 />} />
         <Route path="/landing3" element={<LandingPage3 />} />
+        <Route path="/landing4" element={<LandingPage4 />} />
       </Routes>
     </BrowserRouter>
   )

@@ -44,6 +44,17 @@ function Home() {
       imageAlt: 'Aurora light waves drifting across a dark sky',
       accent: 'from-teal-950/50 via-violet-950/40 to-slate-950/20',
     },
+    {
+      num: '04',
+      title: 'ATELIER',
+      subtitle: 'Serif Editorial Brutalism',
+      description:
+        'A warm paper canvas cut by sharp black borders and oversized serif type.',
+      href: '/landing4',
+      image: '/images/nexus-abstract.jpg',
+      imageAlt: 'Abstract architectural surface in warm paper light',
+      accent: 'from-stone-900/50 to-neutral-900/30',
+    },
   ]
 
   return (
@@ -60,7 +71,7 @@ function Home() {
             </h1>
           </div>
           <span className="hidden font-sans text-sm text-muted-foreground md:block">
-            03 projects
+            04 projects
           </span>
         </div>
       </header>
