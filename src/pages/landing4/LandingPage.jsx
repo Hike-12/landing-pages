@@ -17,7 +17,7 @@ import Footer from './Footer.jsx'
 function LandingPage4() {
   return (
     <>
-      <div className="bg-[#F4F1EA] text-[#111111] font-sans selection:bg-[#111111] selection:text-[#F4F1EA]">
+      <div className="bg-[#F4F1EA] pt-16 text-[#111111] font-sans selection:bg-[#111111] selection:text-[#F4F1EA]">
         <Header />
         <Hero />
         <Statement />
