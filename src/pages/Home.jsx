@@ -43,6 +43,14 @@ function Home() {
       align: 'right',
       size: 'large',
     },
+    {
+      num: '05',
+      name: 'STUDIO NORTH',
+      descriptor: 'Warm ivory minimalism',
+      href: '/landing5',
+      align: 'left',
+      size: 'medium',
+    },
   ]
 
   return (

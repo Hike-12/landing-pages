@@ -9,6 +9,7 @@ const LandingPage = React.lazy(() => import('./pages/landing1/LandingPage'))
 const LandingPage2 = React.lazy(() => import('./pages/landing2/LandingPage'))
 const LandingPage3 = React.lazy(() => import('./pages/landing3/LandingPage'))
 const LandingPage4 = React.lazy(() => import('./pages/landing4/LandingPage'))
+const LandingPage5 = React.lazy(() => import('./pages/landing5/LandingPage'))
 
 function App() {
   useEffect(() => {
@@ -57,6 +58,14 @@ function App() {
               element={
                 <PageWrapper title="ATELIER">
                   <LandingPage4 />
+                </PageWrapper>
+              }
+            />
+            <Route
+              path="/landing5"
+              element={
+                <PageWrapper title="STUDIO NORTH">
+                  <LandingPage5 />
                 </PageWrapper>
               }
             />
