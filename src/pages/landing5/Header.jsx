@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 /**
  * Header
  * Contract: Header(): JSX.Element
@@ -13,12 +15,13 @@ function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 h-16 bg-[#FAF9F6] border-b border-[#1A1917]">
       <div className="mx-auto flex h-full w-full max-w-6xl items-center justify-between px-6">
-        <a
-          href="/landing5"
+        <Link
+          to="/"
           className="font-sans text-xl font-semibold tracking-tight text-[#1A1917]"
+          aria-label="STUDIO NORTH home"
         >
           STUDIO NORTH
-        </a>
+        </Link>
 
         <nav aria-label="Primary">
           <ul className="flex items-center gap-8">

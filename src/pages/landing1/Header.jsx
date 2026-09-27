@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import ThemeToggle from './ThemeToggle'
 
 /**
@@ -23,13 +24,13 @@ function Header() {
         className="flex items-center justify-between py-6 px-6"
         aria-label="Primary"
       >
-        <a
-          href="/"
+        <Link
+          to="/"
           className="font-serif text-xl tracking-tight text-foreground"
           aria-label="HEIRLOOM home"
         >
           HEIRLOOM
-        </a>
+        </Link>
 
         <ul className="hidden md:flex items-center gap-8" role="menubar">
           {navLinks.map((link) => (

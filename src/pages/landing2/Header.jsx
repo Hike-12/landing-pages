@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import ThemeToggle from '../landing1/ThemeToggle.jsx'
 
 /**
@@ -33,13 +34,13 @@ function Header() {
       ].join(' ')}
     >
       <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
-        <a
-          href="/landing2"
+        <Link
+          to="/"
           className="font-sans text-xl font-bold uppercase tracking-tight text-foreground"
           aria-label="NEXUS home"
         >
           NEXUS
-        </a>
+        </Link>
 
         <nav
           aria-label="Primary"

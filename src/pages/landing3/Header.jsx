@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 /**
  * Header
  * Contract: Header(): JSX.Element
@@ -14,12 +16,13 @@ function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-sm">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6">
-        <a
-          href="/landing3"
+        <Link
+          to="/"
           className="text-2xl font-bold tracking-tighter text-white transition-opacity hover:opacity-80"
+          aria-label="FLUX home"
         >
           FLUX
-        </a>
+        </Link>
 
         <nav className="flex items-center gap-8" aria-label="Primary">
           {links.map((label) => (
