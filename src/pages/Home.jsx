@@ -51,6 +51,14 @@ function Home() {
       align: 'left',
       size: 'medium',
     },
+    {
+      num: '06',
+      name: 'PRISM',
+      descriptor: 'Dark creative technology',
+      href: '/landing6',
+      align: 'right',
+      size: 'large',
+    },
   ]
 
   return (
