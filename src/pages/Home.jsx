@@ -59,6 +59,14 @@ function Home() {
       align: 'right',
       size: 'large',
     },
+    {
+      num: '07',
+      name: 'AURELIA',
+      descriptor: 'Curation of fine objects',
+      href: '/landing7',
+      align: 'left',
+      size: 'large',
+    },
   ]
 
   return (
