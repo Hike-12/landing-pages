@@ -1,5 +1,16 @@
 # React + Vite
 
+## Run with Docker
+
+Build the image and start the site:
+
+```sh
+docker build -t landing-pages .
+docker run --rm -p 8080:80 landing-pages
+```
+
+Open http://localhost:8080. The container serves the production build and supports direct navigation to the landing page routes.
+
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:
